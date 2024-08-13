@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1")
-@AllArgsConstructor
 // documentation
 @Tag(
         name = "Salary Controller",
@@ -25,11 +24,14 @@ import org.springframework.web.bind.annotation.*;
 @Validated
 public class SalaryController {
 
-   @Value("${build.version}")
+    @Value("${build.version}")
     private String buildVersion;
 
-    @Autowired
     private ISalaryService iSalaryService;
+
+    public SalaryController(ISalaryService iSalaryService) {
+        this.iSalaryService = iSalaryService;
+    }
 
     // documentation
     @Operation(
@@ -42,7 +44,7 @@ public class SalaryController {
     @PostMapping("/create-salary")
     public ResponseEntity<ResponseDto> createSalary (@RequestBody SalaryDto salaryDto) {
         iSalaryService.createSalary(salaryDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseDto("Successfully Created", HttpStatus.CREATED));
+        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseDto("Created Succesfully",HttpStatus.CREATED));
     }
 
 

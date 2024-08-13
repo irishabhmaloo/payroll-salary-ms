@@ -9,7 +9,7 @@ spring:
     config:
       server:
         git:
-          uri : "https://github.com/synergy2411/ms-config.git"
+          uri : "https://github.com/irishabhmaloo/ms-config"
           timeout: 10
           default-label: main
           force-pull: true

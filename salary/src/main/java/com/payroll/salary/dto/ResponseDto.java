@@ -7,10 +7,6 @@ import org.springframework.http.HttpStatus;
 
 @Data @AllArgsConstructor @NoArgsConstructor
 public class ResponseDto {
-
     private String message;
     private HttpStatus statusCode;
-//
-//    public ResponseDto(String unableToUpdate, HttpStatus httpStatus) {
-//    }
 }
