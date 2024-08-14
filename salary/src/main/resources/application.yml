@@ -5,8 +5,8 @@ spring:
     name: salary
   config: # config-server
     import: "optional:configserver:http://localhost:8071"
-#  profile:
-#    active:
+    # profile:
+    # active:
   datasource:
     url: jdbc:h2:mem:testdb
     username: rishabh
@@ -20,3 +20,28 @@ spring:
   h2:
     console:
       enabled: true
+
+# eureka server
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  info:
+    env:
+      enabled: true
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    fetchRegistry: true
+    registerWithEureka : true
+    serviceUrl:
+      defaultZone: "http://localhost:8070/eureka/"
+
+info:
+  app:
+    name: "Salary MS"
+    description: "Salary MS for Payroll application"
+    version : "1.0.0"
