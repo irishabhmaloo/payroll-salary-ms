@@ -1,7 +1,10 @@
 package com.payroll.salary.mapper;
 
+import com.payroll.salary.dto.SalaryDetailsDto;
 import com.payroll.salary.dto.SalaryDto;
 import com.payroll.salary.entity.Salary;
+
+import java.util.List;
 
 public class SalaryMapper {
 
@@ -25,5 +28,11 @@ public class SalaryMapper {
         salaryDto.setBasicAmt(salary.getBasicAmt());
 
         return salaryDto;
+    }
+
+    public static SalaryDetailsDto mapToSalaryDetailsDto(long empId, List<Salary> salaryList, SalaryDetailsDto salaryDetailsDto) {
+        salaryDetailsDto.setEmpId(empId);
+        salaryDetailsDto.setSalaryList(salaryList);
+        return salaryDetailsDto;
     }
 }

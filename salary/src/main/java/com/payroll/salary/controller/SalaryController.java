@@ -14,6 +14,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1")
 // documentation
@@ -63,6 +65,19 @@ public class SalaryController {
                 .body(salaryDto);
     }
 
+    @Operation(
+            summary = "Fetch all salarys for an employee"
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "Salarys successfully fetched"
+    )
+    @GetMapping("/fetch-all-salary")
+    public ResponseEntity<List<SalaryDto>> fetchAllSalaryDetails(@RequestParam long empId) {
+        List<SalaryDto> salaryDtoList = iSalaryService.fetchAllSalaryDetails(empId);
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(salaryDtoList);
+    }
 
     @Operation(
             summary = "Update a particular salary instance of an employee"

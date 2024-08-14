@@ -10,6 +10,8 @@ import com.payroll.salary.service.ISalaryService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -45,6 +47,20 @@ public class SalaryServiceImpl implements ISalaryService {
         SalaryDto salaryDto = SalaryMapper.mapToSalaryDto(salary, new SalaryDto());
 
         return salaryDto;
+    }
+
+    // fetch all salary details of a particular employee
+    public List<SalaryDto> fetchAllSalaryDetails(Long empId){
+        List<Salary> salaryList = salaryRepository.findByEmpId(empId);
+        if(salaryList.isEmpty()){
+            throw new ResourceNotFoundException("Salary", "Emp ID", "null", "null");
+        }
+        List<SalaryDto> salaryDtoList = new ArrayList<>();
+        for (Salary salary : salaryList) {
+            SalaryDto salaryDto = SalaryMapper.mapToSalaryDto(salary, new SalaryDto());
+            salaryDtoList.add(salaryDto);
+        }
+        return salaryDtoList;
     }
 
     // update a particular salary

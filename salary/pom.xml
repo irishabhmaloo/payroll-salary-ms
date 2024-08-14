@@ -89,6 +89,12 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
+
+		<!--openfeign-->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
 	</dependencies>
 
 	<!--Config Server-->
@@ -126,7 +132,7 @@
 				<version>3.4.1</version>
 				<configuration>
 					<to>
-						<image>rishabhmaloo/${project.artifactId}:1.0.0</image>
+						<image>rishabhmaloo/${project.artifactId}:1.0.1</image>
 						<!--(docker id)/${project.artifactId}:1.0.0-->
 					</to>
 				</configuration>
