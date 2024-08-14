@@ -27,6 +27,7 @@ public class SalaryController {
     @Value("${build.version}")
     private String buildVersion;
 
+    @Autowired
     private ISalaryService iSalaryService;
 
     public SalaryController(ISalaryService iSalaryService) {
