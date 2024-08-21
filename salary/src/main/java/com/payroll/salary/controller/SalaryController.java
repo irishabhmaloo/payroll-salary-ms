@@ -24,6 +24,7 @@ import java.util.List;
         description = "Salary controller for Payroll project"
 )
 @Validated
+@CrossOrigin(origins = "http://localhost:9090")
 public class SalaryController {
 
     @Value("${build.version}")
@@ -44,6 +45,7 @@ public class SalaryController {
             responseCode = "201",
             description = "Salary successfully created"
     )
+    // @CrossOrigin(origins = "http://localhost:9090")
     @PostMapping("/create-salary")
     public ResponseEntity<ResponseDto> createSalary (@RequestBody SalaryDto salaryDto) {
         iSalaryService.createSalary(salaryDto);

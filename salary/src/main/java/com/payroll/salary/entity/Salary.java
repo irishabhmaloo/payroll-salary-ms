@@ -16,7 +16,7 @@ public class Salary extends BaseEntity {
     private long salaryId;
 
     @NotNull(message = "Employee ID can not be empty")
-    private long empId;
+    private Long empId;
     private String dateFrom;
     private String dateTo;
     private long basicAmt;
