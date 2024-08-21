@@ -1,0 +1,52 @@
+server:
+  port: 8080 # default port
+spring:
+  application:
+    name: salary
+  config: # config-server
+    import: "optional:configserver:http://localhost:8071"
+    # profile:
+    # active:
+  datasource:
+    # url: jdbc:h2:mem:testdb
+    # username: rishabh
+    # password: "testdb"
+    # driverClassName: org.h2.Driver
+    url: jdbc:mysql://localhost:3306/mydatabase
+    username: root
+    password: rootpassword
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQLDialect
+    # database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+
+# eureka server
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  info:
+    env:
+      enabled: true
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    fetchRegistry: true
+    registerWithEureka : true
+    serviceUrl:
+      defaultZone: "http://localhost:8070/eureka/"
+
+info:
+  app:
+    name: "Salary MS"
+    description: "Salary MS for Payroll application"
+    version : "1.0.0"
